@@ -1,0 +1,13 @@
+# Minimal configuration for building a DPN freeboard test instance.
+# 
+#
+FROM nginx
+RUN apt-get update 
+RUN apt-get install -y git nano nodejs npm 
+## Set your Build Tag
+ENV Release_dir nginx-freeboard
+RUN git clone  https://github.com/Freeboard/freeboard.git /$Release_dir
+#RUN npm install
+WORKDIR  $Release_dir
+EXPOSE 80
+EXPOSE 443
